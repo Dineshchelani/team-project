@@ -1,0 +1,56 @@
+#main{
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+    box-shadow: 0px 0px 10px 1px rgba(2, 26, 247, 0.247);
+
+}
+h1{
+    background-color: rgba(2, 26, 247, 0.6);
+    color: rgb(255, 255, 255);
+    border-left: solid 12px rgba(0, 14, 140, 0.7);
+    padding: 7px;
+}
+
+form{
+    display: inline;
+}
+#email,#password,#nUsername,#nEmail,#nPassword{
+    width: 95%;
+    margin: 1%;
+    height: 45px;
+    box-shadow: 3px 3px 15px 1px  rgb(192, 193, 204);
+    border: none;
+  border-bottom: inset 4px rgba(2, 27, 247, 0.7);
+  outline: none;
+}
+
+#email:hover,#password:hover,#nUsername:hover,#nEmail:hover,#nPassword:hover{
+    border: none;
+    border-bottom: inset 4px rgba(211, 37, 37, 0.979);
+    
+}
+
+
+.btn{
+    border: inset 4px rgba(2, 27, 247, 0.6);
+    width: 120px;
+    margin: 1%;
+    height: 45px;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn:hover{
+    box-shadow: 0px 0px 25px 3px  rgba(2, 26, 247, 0.349);
+    border: inset 8px rgba(2, 27, 247, 0.6);
+
+}
+label {
+    float: left;
+    margin-left: 5px;
+    font-size: 18px;
+}
