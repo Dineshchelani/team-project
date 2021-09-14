@@ -17,7 +17,7 @@
     <title>Teams</title>
 </head>
 
-<body onload="teamsOwn() , getCU()">
+<body onload="teamsOwn()">
        <!-- ================================= Teams page =================================  -->
 
        <div id="teamsPage">
@@ -25,7 +25,7 @@
             <h2 id="teamHeading">Your Teams
                 <!-- Current User data button -->
                 <div class="btn-group">
-                    <button type="button" class="userbtn dropdown-toggle" data-bs-toggle="dropdown"
+                    <button type="button" class="userbtn dropdown-toggle" data-bs-toggle="dropdown" onclick="getCU()"
                         aria-expanded="false"></button>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item" style="color: #021bf799; font-weight: bold;">Name: <span
