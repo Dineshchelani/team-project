@@ -128,14 +128,14 @@ function createTeam(event) {  // cUName = Current user name
 
 }
 
-
+// display the team that user own
 function teamsOwn() {
 
     let flag = false;
+    let status = "owner";
     var currentUser = JSON.parse(localStorage.getItem("currentUser"));
     let cUName = currentUser['Name'];
     let cUEmail = currentUser['Email'];
-    let tid = currentUser['tid'];
     // stored teams
     var createdTeams = JSON.parse(localStorage.getItem("teams")) || [];
 
@@ -146,59 +146,82 @@ function teamsOwn() {
 
         if (cUEmail == createdTeams[index]['ownerEmail'] && cUName == createdTeams[index]['ownerName']) {
             flag = true
+            let tid = createdTeams[index]['tid'];
             const mainDiv = document.getElementById("teamsOwn");
-            const childDiv = document.createElement('div');
+            const childDiv = mainDiv.appendChild(document.createElement('div'));
             childDiv.classList.add("team");
-            childDiv.innerHTML = '<center> <h3> your team </h3> </center>'
-            mainDiv.appendChild(childDiv);
-
-            let anchorTag = teamCardHolder.appendChild(document.createElement("a"))
-            anchorTag.setAttribute("href", "./teamManager.html");
-            //anchorTag.setAttribute("id", val);
-            let div = anchorTag.appendChild(document.createElement("div"))
-            //div.classList.add("m-2", "alert", "alert-success");
-            //div.setAttribute("role", "alert");
-            div.setAttribute("onclick", `currentTeam(${tid})`);
-            div.style.cursor = "pointer"
-            let h4 = div.appendChild(document.createElement("h4"));
-            h4.classList.add("alert-heading");
-            h4.textContent = teamReporter.teams[val].category;
-            let mark = div.appendChild(document.createElement("mark"));
-            mark.classList.add("alert-success")
-            mark.innerText = "Members: "
-            mark.style.fontWeight = "bold";
-            let small = div.appendChild(document.createElement("small"));
-            small.classList.add("mb-0");
-            let count = 0;
-            teamReporter.teams[val].members.find(members => {
-                let memberName = teamReporter.users[members].userName;
-                if (teamReporter.teams[val].members.length == 1) {
-                    small.textContent = memberName
-                }
-                else if (teamReporter.teams[val].members.length > 1) {
-                    small.textContent += memberName;
-                    if (count < teamReporter.teams[val].members.length - 2) {
-                        small.textContent += ', ';
-                    }
-                    else if (count == teamReporter.teams[val].members.length - 2) {
-                        small.textContent += ' & ';
-                    }
-                }
-                count++;
-            })
+            childDiv.setAttribute("onclick", `ownerView(${tid}, "owner")`);
+            childDiv.style.cursor = "pointer"
+            let h4 = childDiv.appendChild(document.createElement("h4"));
+            h4.classList.add("teamName-heading");
+            h4.textContent = createdTeams[index]['teamName'];
+            noOfUsers = createdTeams[index]['users'].length
+            let span = childDiv.appendChild(document.createElement("span"));
+            span.innerText = `Members: you and ${noOfUsers} other`
+            span.style.fontWeight = "bold";
         }
     }
     if (flag !== true) {
         const mainDiv = document.getElementById("teamsOwn");
-        const childDiv = document.createElement('div');
+        const childDiv = mainDiv.appendChild(document.createElement('div'));
         childDiv.classList.add("team");
-        childDiv.innerHTML = '<center> <h3> No team </h3> </center>'
-        mainDiv.appendChild(childDiv);
+        childDiv.innerHTML = "<h3> No team available </h3>"
+    }
+}
+
+// display the team that user is part of
+function teamsPart() {
+
+    let flag = false;
+    let status = "user";
+    var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    let cUEmail = currentUser['Email'];
+    // stored teams
+    let createdTeams = JSON.parse(localStorage.getItem("teams")) || [];
+    
+    // check the user is part of any team
+    createdTeams.forEach(myFunction1);
+    function myFunction1(item, index1) {
+        
+        let users = createdTeams[index1]['users']
+        users.forEach(myFunction2);
+        
+        function myFunction2(item, index) {
+
+            if (cUEmail == users[index]) {
+                flag = true
+                let tid = createdTeams[index1]['tid'];
+                const mainDiv = document.getElementById("teamsPart");
+                const childDiv = mainDiv.appendChild(document.createElement('div'));
+                childDiv.classList.add("team");
+                childDiv.setAttribute("onclick", `userView(${tid}, "user")`);
+                childDiv.style.cursor = "pointer"
+                let h4 = childDiv.appendChild(document.createElement("h4"));
+                h4.classList.add("teamName-heading");
+                h4.textContent = createdTeams[index1]['teamName'];
+                noOfUsers = users.length
+                let span = childDiv.appendChild(document.createElement("span"));
+                span.innerText = `Members: you and ${noOfUsers} other`
+                span.style.fontWeight = "bold";
+            }
+        }
+    }
+    if (flag !== true) {
+        const mainDiv = document.getElementById("teamsPart");
+        const childDiv = mainDiv.appendChild(document.createElement('div'));
+        childDiv.classList.add("team");
+        childDiv.innerHTML = "<h3> No team available </h3>"
 
     }
 
-
-
-
 }
 
+//Display the team owner settings 
+function ownerView(temId, status) {
+
+    location.href = "./teamManager.html"
+}
+//Display the team owner settings 
+function userView(teamId, status){
+    location.href = "./teamManager.html"
+}
