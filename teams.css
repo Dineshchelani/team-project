@@ -61,14 +61,15 @@
 }
 
 
-.team-cards-holder{
-    /* display: none; */
-    max-width: 800px;
-    min-width: 200px;
-    margin: auto !important;
+.team{
+    width: 65%;
+    padding: 5px;
+    margin: 10px auto 10px auto ;
+    background-color: rgb(204, 209, 255, 0.38);
+    border-left: solid 8px rgba(2, 26, 247, 0.6);
+    text-align: left;
 }
-
-.team-cards-holder a{
-    text-decoration: none;
+.team:hover{
+    box-shadow: 0px 0px 10px 1px rgba(2, 26, 247, 0.247);
 }
 
