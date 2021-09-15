@@ -17,7 +17,7 @@
     <title>Teams</title>
 </head>
 
-<body onload="teamsOwn()">
+<body onload="teamsOwn(), teamsPart()">
        <!-- ================================= Teams page =================================  -->
 
        <div id="teamsPage">
@@ -25,8 +25,8 @@
             <h2 id="teamHeading">Your Teams
                 <!-- Current User data button -->
                 <div class="btn-group">
-                    <button type="button" class="userbtn dropdown-toggle" data-bs-toggle="dropdown" onclick="getCU()"
-                        aria-expanded="false"></button>
+                    <button type="button" class="userbtn dropdown-toggle" data-bs-toggle="dropdown"
+                       onclick="getCU()" aria-expanded="false"></button>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item" style="color: #021bf799; font-weight: bold;">Name: <span
                                 style="color: black; font-weight: normal" id="cUName"></span></li>
@@ -40,9 +40,9 @@
         </div> 
         <center>
             <h3>Teams you own</h3>
-            <div class="team-cards-holder " id="teamcardsholder"></div>
+            <div  id="teamsOwn"></div>
             <h3>Teams you're part of</h3>
-            <div class="team-cards-holder " id="memberteamcardsholder"> </div>
+            <div  id="teamsPart"> </div>
 
             <div>
                 <!-- Button trigger modal -->
@@ -71,7 +71,7 @@
                                             <option value="Development Team">Development Team</option>
                                             <option value="Marketing Team">Marketing Team</option>
                                         </select>
-                                            <input id="users" style="width: 80%;" type="email"placeholder="Members (Type Email)" required="required">
+                                            <input id="users" style="width: 78%;" type="email"placeholder="Members (Type Email)" required="required">
                                             <input type="button" class="btn btn-outline-primary" onclick="add_element_to_array()" value="Add"></input>  
                                     </div>
                                     <div class="modal-footer">
